@@ -61,5 +61,43 @@ let employeeDetails = new Vue({
                 employeeDetails.clearField();
             }
         },
+        selectEmployee(index, firstname, lastname, id, dob, designation) {
+            console.log(id);
+            this.selectedRow = index;
+            this.firstName = firstname;
+            this.lastName = lastname;
+            this.employeeCode = id;
+            this.dateofBirth = dob;
+            this.designation = designation;
+            this.btnStatus = false;
+            this.disableInput = true;
+        },
+        updateEmployee() {
+            let thisRow = this.selectedRow;
+            this.employees[thisRow].first_name = this.firstName;
+            this.employees[thisRow].last_name = this.lastName;
+            this.employees[thisRow].employee_code = this.employeeCode;
+            this.employees[thisRow].dateof_birth = this.dateofBirth;
+            this.employees[thisRow].designation = this.designation;
+            employeeDetails.clearField();
+            this.btnStatus = true;
+            this.disableInput = false;
+        },
+        deleteEmployee(id) {
+            let deleteRow = confirm("Are your sure to delete");
+            if (deleteRow) {
+                this.employees.splice(id, 1);
+            }
+            employeeDetails.clearField();
+            this.disableInput = false;
+        },
+        preventSubmit(e) {
+            e.preventDefault();
+        },
+    },
+       computed: {
+        disableBtn() {
+            return this.disableInput;
+        },
     },
 });
