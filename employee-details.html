@@ -13,33 +13,33 @@
 
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row" id="employees-details">
             <div class="col-md-6">
                 <h1 class="text-center">Employee Form</h1>
-                <form>
+                <form @submit.prevent="checkEmployee">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="first-name">First Name</label>
-                            <input type="text" class="form-control" name="first-name">
+                            <input type="text" class="form-control" name="first-name" v-model="firstName">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="last-name">Last Name</label>
-                            <input type="text" class="form-control" name="last-name">
+                            <input type="text" class="form-control" name="last-name" v-model="lastName">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="employee-code">Employee Code</label>
-                            <input type="text" class="form-control" name="employee-code">
+                            <input type="text" class="form-control" name="employee-code" v-model="employeeCode">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="date-of-birth">Date of Birth</label>
-                            <input type="date" class="form-control" name="date-of-birth">
+                            <input type="date" class="form-control" name="date-of-birth" v-model="dateofBirth">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="designation">Designation</label>
-                        <select class="form-control" name="designation">
+                        <select class="form-control" name="designation" v-model="designation">
                             <option value="">select</option>
                             <option value="Software Engineer">Software Engineer</option>
                             <option value="Web Developer">Web Developer</option>
@@ -68,12 +68,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                            <tr v-for="(employee,index) in employees" :key="employee.employee_code">
+                                <td>{{employee.first_name}}</td>
+                                <td>{{employee.last_name}}</td>
+                                <td>{{employee.employee_code}}</td>
+                                <td>{{employee.dateof_birth}}</td>
+                                <td>{{employee.designation}}</td>
                                 <td>
                                     <a href="#" class="btn btn-warning">
                                         <i class="bi bi-pencil"></i>
