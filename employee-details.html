@@ -30,7 +30,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="employee-code">Employee Code</label>
-                            <input type="text" class="form-control" name="employee-code" v-model="employeeCode">
+                            <input type="text" :disabled="disableBtn" class="form-control" name="employee-code"
+                                v-model="employeeCode">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="date-of-birth">Date of Birth</label>
